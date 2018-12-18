@@ -1,0 +1,13 @@
+#################################################################################################################################################
+# SVC_ID        GETH_INSTANCE   P2P_PORT        PID_DIR                         GETH_BASE_DIR                   RPCAPI
+#################################################################################################################################################
+1000            8545            33000           /usr1/bora/NODE/8545            /usr1/bora/NODE                 eth,net,web3,txpool
+1010            8501            33001           /usr1/bora/NODE/8501            /usr1/bora/NODE                 eth,net,web3,txpool
+1020            8502            33002           /usr1/bora/NODE/8502            /usr1/bora/NODE                 eth,net,web3,txpool
+1030            8503            33003           /usr1/bora/NODE/8503            /usr1/bora/NODE                 eth,net,web3,txpool
+1040            8504            33004           /usr1/bora/NODE/8504            /usr1/bora/NODE                 eth,net,web3,txpool
+1050            8505            33005           /usr1/bora/NODE/8505            /usr1/bora/NODE                 eth,net,web3,txpool
+1060            8506            33006           /usr1/bora/NODE/8506            /usr1/bora/NODE                 eth,net,web3,txpool
+1070            8507            33007           /usr1/bora/NODE/8507            /usr1/bora/NODE                 eth,net,web3,txpool
+1080            8508            33008           /usr1/bora/NODE/8508            /usr1/bora/NODE                 eth,net,web3,txpool
+1090            8509            33009           /usr1/bora/NODE/8509            /usr1/bora/NODE                 eth,net,web3,txpool

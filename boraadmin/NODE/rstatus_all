@@ -1,0 +1,38 @@
+#!/bin/bash
+
+WORKDIR="$(dirname -- "$(readlink -f -- "$0")")"
+
+source ${WORKDIR}/conf/.env.ini
+source ${WORKDIR}/script/common_func.sh
+
+cd ${WORKDIR}
+
+printf "============ ============ ============ ============ ============ ============ ============ ============ ============\n";
+printf "  Instance.1   Instance.2   Instance.3   Instance.4   Instance.5   Instance.6   Instance.7   Instance.8   Instance.9\n";
+printf "============ ============ ============ ============ ============ ============ ============ ============ ============\n";
+
+
+while :
+do
+    RESULTARR=("" "" "" "" "" "" "" "" "")
+    RESULTARR=("_" "_" "_" "_" "_" "_" "_" "_" "_")
+
+    j=0
+
+    for i in $(ls -d 85*);
+    do
+        RESULT=`geth attach http://127.0.0.1:${i} --exec "eth.blockNumber" 2>&1`
+        if [[ "$RESULT" == *"Fatal"* ]]; then
+            RESULT=-1;
+        fi
+
+        RESULTARR[j]=$RESULT
+        j=`expr $j + 1`
+
+        sleep 1;
+    done
+
+    printf "%12s %12s %12s %12s %12s %12s %12s %12s %12s | %s\n" ${RESULTARR[0]} ${RESULTARR[1]} ${RESULTARR[2]} ${RESULTARR[3]} ${RESULTARR[4]} ${RESULTARR[5]} ${RESULTARR[6]} ${RESULTARR[7]} ${RESULTARR[8]} ${RESULTARR[9]} `date "+%Y/%m/%d_%H:%M:%S"`
+    sleep 2
+done
+

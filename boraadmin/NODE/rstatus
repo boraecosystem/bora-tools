@@ -1,0 +1,24 @@
+#!/bin/bash
+
+WORKDIR="$(dirname -- "$(readlink -f -- "$0")")"
+
+source ${WORKDIR}/conf/.env.ini
+source ${WORKDIR}/script/common_func.sh
+
+chkParameter $1
+GETH_INSTANCE=$1
+
+if [ ! -f ${WORKDIR}/${GETH_INSTANCE}/geth.pid ]
+then
+    echo "No geth.pid file("${GETH_INSTANCE}") exists !!!!"
+    exit 1
+fi
+
+GETH_CMD="eth.blockNumber"
+
+while (true);do
+    BNO=`geth attach http://127.0.0.1:${GETH_INSTANCE} --exec "${GETH_CMD}"`
+    echo '['${GETH_INSTANCE}'] '`date +"%Y/%m/%d %H:%M:%S"` - $BNO
+    sleep 2
+done
+

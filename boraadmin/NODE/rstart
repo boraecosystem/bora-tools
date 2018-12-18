@@ -1,0 +1,23 @@
+#!/bin/bash
+
+WORKDIR="$(dirname -- "$(readlink -f -- "$0")")"
+
+source ${WORKDIR}/conf/.env.ini
+source ${WORKDIR}/script/common_func.sh
+
+chkParameter $1
+GETH_INSTANCE=$1
+
+chkPID2 "${WORKDIR}/${GETH_INSTANCE}/geth.pid" "${GETH_INSTANCE}"
+
+echo "=========================="
+echo "geth Starting..." ${GETH_INSTANCE}
+echo "=========================="
+
+bash  ${WORKDIR}/${GETH_INSTANCE}/0.start.sh
+
+echo
+echo "Check Process...."
+ps -ef | grep geth | grep ${GETH_INSTANCE}
+echo;echo;echo
+

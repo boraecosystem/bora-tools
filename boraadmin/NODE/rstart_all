@@ -1,0 +1,21 @@
+#!/bin/bash
+
+WORKDIR="$(dirname -- "$(readlink -f -- "$0")")"
+
+source ${WORKDIR}/conf/.env.ini
+source ${WORKDIR}/script/common_func.sh
+
+
+cd ${WORKDIR}
+
+for i in $(ls -d 85*);
+do
+    ./rstart ${i};
+    sleep 3;
+done
+
+
+echo
+echo "### Check Process #######################"
+ps -ef | grep geth | grep 85
+

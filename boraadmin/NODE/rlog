@@ -1,0 +1,14 @@
+#!/bin/bash
+
+WORKDIR="$(dirname -- "$(readlink -f -- "$0")")"
+
+source ${WORKDIR}/conf/.env.ini
+source ${WORKDIR}/script/common_func.sh
+
+chkParameter $1
+GETH_INSTANCE=$1
+
+chkPID "${WORKDIR}/${GETH_INSTANCE}/geth.pid" "${GETH_INSTANCE}"
+
+tail -f ${WORKDIR}/${GETH_INSTANCE}/geth.log
+

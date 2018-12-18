@@ -1,0 +1,16 @@
+#!/bin/bash
+
+WORKDIR="$(dirname -- "$(readlink -f -- "$0")")"
+
+source ${WORKDIR}/conf/.env.ini
+source ${WORKDIR}/script/common_func.sh
+
+cd ${WORKDIR}
+
+for i in $(ls -d 85*);
+do
+    echo "===" ${i} "==="
+    ./ruse ${i} $1
+    sleep 1;
+done
+
